@@ -1,0 +1,103 @@
+﻿@model PR_Funds_MN.sp_fund_login__Result
+
+@{
+    ViewBag.Title = "login";
+    Layout = "~/Views/Shared/_layouforlogin.cshtml";
+}
+
+
+<script>
+    function showpassword()
+    {
+        if(document.getElementById('pass')!=null)
+        {
+            var pass_wrd = document.getElementById('pass').innerText;
+
+        }
+    }
+</script>
+<h2 style="text-align: center;color:darkblue; font-family: Algerian">Login form</h2>
+<h3 style="text-align:center;color:red">@ViewBag.message</h3>
+<h3 style="text-align:center;color:red">@ViewBag.incrct_pass</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.sl_no, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.sl_no)
+                    @Html.ValidationMessageFor(model => model.sl_no)
+                </div>
+            </div>*@
+
+        <div class="form-group" id="login">
+            <table style="width:auto; height:100px;align-items:center" align="center">
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.username, "Username:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.username, new { @class = "form-control", @placeholder = "Username...", @MaxLength="25"  })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.username)
+                    </td>
+                </tr>
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.pass_word, "Password:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.PasswordFor(model => model.pass_word, new { @class = "form-control", @placeholder = "Password....", @MaxLength="15"  })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.pass_word)
+                    </td>
+                </tr>
+                
+                <tr style="width: 50%; height: 5%">
+                    
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                    </td>
+                </tr>
+
+            </table>
+
+        
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.user_roleid, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.user_roleid)
+                    @Html.ValidationMessageFor(model => model.user_roleid)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>*@
+                </div>     
+    </div>
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+

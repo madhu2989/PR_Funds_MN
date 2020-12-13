@@ -1,0 +1,92 @@
+﻿@model PR_Funds_MN.fund_login_onlyfor_signup
+
+@{
+    ViewBag.Title = "sign_up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">sign up form</h2>
+<h3 style="text-align:center;color:green">@TempData["sign_up_success"]</h3>
+<h3 style="text-align:center;color:red">@ViewBag.nullvalues</h3>
+<h3 style="text-align:center;color:red">@ViewBag.pass_notmatch</h3>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <table style="width:auto; height:300px;align-items:center" align="center">
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.Name, "Member Name:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Name)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </td>
+                </tr>
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.username, "Username:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.username, new { placeholder = "enter username" })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.username)
+                    </td>
+                </tr>
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.pass_word, "Password:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.pass_word)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.pass_word)
+                    </td>
+                </tr>
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.con_pass_word, "Confirm password:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.con_pass_word)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.con_pass_word)
+                    </td>
+                </tr>
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.user_roleid, "User role ID:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.user_roleid)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.user_roleid)
+                    </td>
+                </tr>
+
+                <tr style="width: 50%; height: 5%">
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Create" class="btn btn-success" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}
+
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

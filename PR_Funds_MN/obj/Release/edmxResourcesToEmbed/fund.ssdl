@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FundsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="avl_fund">
+    <Key>
+      <PropertyRef Name="sl_no" />
+    </Key>
+    <Property Name="sl_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="avl_fund_" Type="money" />
+  </EntityType>
+  <EntityType Name="full_valuestoprocedure">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="25" />
+    <Property Name="mobile_no" Type="bigint" />
+    <Property Name="loan_amt" Type="money" />
+    <Property Name="inst_amt" Type="money" />
+    <Property Name="no_ofdue" Type="int" />
+    <Property Name="paid_dt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="fund_collection_new">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="25" />
+    <Property Name="mobile_no" Type="bigint" />
+    <Property Name="loan_amnt" Type="money" />
+    <Property Name="balance_amt" Type="money" />
+    <Property Name="no_ofdue" Type="int" />
+    <Property Name="dt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="fund_login">
+    <Key>
+      <PropertyRef Name="sl_no" />
+    </Key>
+    <Property Name="sl_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" />
+    <Property Name="pass_word" Type="varchar" MaxLength="20" />
+    <Property Name="user_roleid" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="fund_login_onlyfor_signup">
+    <Key>
+      <PropertyRef Name="sl_no" />
+    </Key>
+    <Property Name="sl_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="20" />
+    <Property Name="pass_word" Type="varchar" MaxLength="20" />
+    <Property Name="con_pass_word" Type="varchar" MaxLength="20" />
+    <Property Name="user_roleid" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="trans_fund">
+    <Key>
+      <PropertyRef Name="sl_no" />
+    </Key>
+    <Property Name="sl_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="who_trans" Type="varchar" MaxLength="25" />
+    <Property Name="trans_type" Type="int" />
+    <Property Name="amnt" Type="money" />
+    <Property Name="trans_dt" Type="datetime" />
+    <Property Name="avl_balance" Type="money" />
+  </EntityType>
+  <Function Name="sp_avl_fund" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="avl_fund_" Type="money" Mode="In" />
+  </Function>
+  <Function Name="sp_checkbal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_fund_amount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_fund_collection_new" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="mobile_no" Type="bigint" Mode="In" />
+    <Parameter Name="loan_amt" Type="money" Mode="In" />
+    <Parameter Name="inst_amt" Type="money" Mode="In" />
+    <Parameter Name="no_ofdue" Type="int" Mode="In" />
+    <Parameter Name="dt" Type="datetime" Mode="In" />
+    <Parameter Name="trans_type" Type="int" Mode="InOut" />
+    <Parameter Name="sl_no" Type="int" Mode="InOut" />
+    <Parameter Name="avl_bal" Type="money" Mode="InOut" />
+  </Function>
+  <Function Name="sp_fund_collection_new_addmember" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="mobile_no" Type="bigint" Mode="In" />
+    <Parameter Name="dt" Type="datetime" Mode="In" />
+    <Parameter Name="idout" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_fund_collection_new_editonly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="mob_no" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_fund_login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userName_" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_fund_login_" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userName_" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_fund_login_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sl_no" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_fund_login_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sl_no" Type="int" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="pass_word" Type="varchar" Mode="In" />
+    <Parameter Name="user_roleid" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="sl_noout" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_members" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_members_singlename" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_no_ofdays" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="recnt_date" Type="datetime" Mode="InOut" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_no_ofweeks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_view_fund_collection_new" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_view_fund_collection_new_byid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_view_fund_collection_new_byidonly" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_view_fund_collection_new_byname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_view_fund_login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_viewmembers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_viewtrans_bydate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_viewtrans_fund" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="FundsModelStoreContainer">
+    <EntitySet Name="avl_fund" EntityType="Self.avl_fund" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="full_valuestoprocedure" EntityType="Self.full_valuestoprocedure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fund_collection_new" EntityType="Self.fund_collection_new" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fund_login" EntityType="Self.fund_login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fund_login_onlyfor_signup" EntityType="Self.fund_login_onlyfor_signup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trans_fund" EntityType="Self.trans_fund" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

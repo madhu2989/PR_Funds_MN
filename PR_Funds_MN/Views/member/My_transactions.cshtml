@@ -1,0 +1,95 @@
+﻿@model IEnumerable<PR_Funds_MN.sp_viewtrans_fund_joined_deposit_byId_Result>
+
+@{
+    ViewBag.Title = "My_transactions";
+    Layout = "~/Views/Shared/Layout_for_guest.cshtml";
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">Transactions history</h2>
+
+@*<p>
+        @Html.ActionLink("Back to mainpage", "mainpage")
+    </p>*@
+@*search by date *@
+<p id="name"></p>
+<script>
+    function searchbydate() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("date");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table1");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[4];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+
+            }
+        }
+    }
+</script>
+<div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <input type="text" placeholder="search by date" id="date" onkeyup="searchbydate()" />
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <table class="table" id="table1" style="table-layout:auto;border-collapse:collapse;align-items:center">
+        <tr>
+            <th style="text-align: center">
+                @Html.DisplayName("sl No")
+            </th>
+            <th style="text-align: center; padding: 16px">
+                @Html.DisplayName("Member name")
+            </th>
+            <th style="text-align: center">
+                @Html.DisplayName("Transaction type")
+            </th>
+            <th style="text-align: center">
+                @Html.DisplayName("Amount")
+            </th>
+            <th style="text-align: center">
+                @Html.DisplayName("Transaction date")
+                </thstyle>
+            <th style="text-align: center">
+                @Html.DisplayName("Available Balance")
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center; background-color: #f2f2f2">
+                    @Html.DisplayFor(modelItem => item.sl_no)
+                </td>
+                <td style="text-align: center; background-color: #f2f2f2">
+                    @Html.DisplayFor(modelItem => item.who_trans)
+                </td>
+                <td style="text-align: center; background-color: #f2f2f2">
+                    @Html.DisplayFor(modelItem => item.trans_type)
+                </td>
+                <td style="text-align: right; background-color: #f2f2f2">
+                    @Html.DisplayFor(modelItem => item.amnt)
+                </td>
+                <td style="text-align: center; background-color: #f2f2f2">
+                    @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.trans_dt))
+                </td>
+                <td style="text-align: right; background-color: #f2f2f2">
+                    @Html.DisplayFor(modelItem => item.avl_balance)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

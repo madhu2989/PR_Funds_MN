@@ -1,0 +1,102 @@
+﻿@model PR_Funds_MN.valuesto_sp_funds_ofMember
+
+@{
+    ViewBag.Title = "newfund";
+    @*var amount_list = new SelectList(ViewBag.amount, "amount");
+        ViewData["amount_list"] = amount_list;*@
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">New fund</h2>
+<h3 style="text-align:center;color:green">@ViewBag.Nameofmember</h3>
+<h3 style="text-align:left;color:red">@ViewBag.loanamt_null</h3>
+
+@using (Html.BeginForm())
+{
+    @*<div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+
+
+    <div>
+        <table style="width:auto; height:300px;align-items:center" align="center">
+            <tr style="width: 50%;height:5% ">
+                <td>
+                    @Html.DisplayName("Member name:")
+                </td>
+                <td>
+                    @Html.EditorFor(a => a.name)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.name)
+                </td>
+            </tr>
+            @*<tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.DisplayName("Mobile No:")
+                    </td>
+                    <td>
+                        @Html.EditorFor(a => @Session["new_mob"])
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(a => a.mobile_no)
+                    </td>
+                </tr>*@
+            <tr style="width: 50%; height: 5%">
+                <td>
+                    @Html.DisplayName("Loan amount:")
+                </td>
+                <td>
+                    @Html.DropDownListFor(a => a.loan_amt, new List<SelectListItem> {
+               new SelectListItem(){Text="50000" ,Value="50000"},
+               new SelectListItem(){Text="100000" ,Value="100000"}
+               }, "--select amount--")
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.loan_amt)
+                </td>
+            </tr>
+            @*<tr>
+                    <td>
+                        @Html.DisplayNameFor(a => a.amnt)
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(a => a.amnt, new List<SelectListItem> {
+                       new SelectListItem(){Text="25000" ,Value="25000"},
+                       new SelectListItem(){Text="50000" ,Value="50000"},
+                       new SelectListItem(){Text="75000" ,Value="75000"},
+                       new SelectListItem(){Text="100000" ,Value="100000"}
+                       }
+                            , "--select amount--")
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(a => a.amnt)
+                    </td>
+                </tr>*@
+            <tr style="width: 50%; height: 5%">
+                <td>
+                    @Html.DisplayName("Date:")
+                </td>
+                <td>
+                    @Html.EditorFor(a => a.paid_dt)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.paid_dt)
+                </td>
+            </tr>
+            <tr style="width: 50%; height: 5%">
+                <td colspan="2" align="center">
+                    <input type="submit" value="Submit" class="btn btn-success">
+                </td>
+            </tr>
+        </table>
+    </div>
+    @*<div>
+            @Html.ActionLink("Back to Main page", "frontpage")
+        </div>*@
+}
+
+
+
+
+
+

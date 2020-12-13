@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <style>
+
+        .style6 {
+            -webkit-box-shadow: -5px 10px 81px 14px rgba(0,0,0,0.75);
+            -moz-box-shadow: -5px 10px 81px 14px rgba(0,0,0,0.75);
+            box-shadow: -5px 10px 81px 14px rgba(0,0,0,0.75);
+            padding: 10px;
+           
+        }
+
+        </style>
+</head>
+
+
+<body style="background-color: #e2d9d9;">
+    <nav class="navbar navbar-dark bg-secondary">
+        <a class="navbar-brand mx-auto" href="#"><h3>PR funds</h3></a>
+    </nav>
+    @*<div class="navbar navbar-inverse navbar-fixed-top"> 
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"></ul>
+            </div>
+        </div>
+    </div>*@
+    <div class="row" style="margin-top:24vh;">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+    <div class="container body-content style6">
+        @RenderBody()
+        <hr />
+        
+    </div>
+       </div>
+        <div class="col-sm-4"></div> 
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+
+</html> 
+<nav class="navbar fixed-bottom nav-dark bg-secondary">
+    <a class="navbar-brand mx-auto" href="#">JAI SRI RAM</a>
+</nav>

@@ -1,0 +1,99 @@
+﻿@model PR_Funds_MN.sp_viewtrans_bydate_Result
+
+@{
+    ViewBag.Title = "printweeklyfund";
+}
+
+@*for loding symbol on button*@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+    .buttonload {
+        background-color: #4CAF50; /* Green background */
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 12px 16px; /* Some padding */
+        font-size: 16px; /* Set a font size */
+    }
+</style>
+
+<h3 style="text-align:center;color:red">@ViewBag.datenotfound</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2 style="text-align: center; color: darkblue; font-family: Algerian">Print week funds</h2>
+        <hr />
+        @Html.ValidationSummary(true)
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.sl_no, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.sl_no)
+                    @Html.ValidationMessageFor(model => model.sl_no)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.who_trans, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.who_trans)
+                    @Html.ValidationMessageFor(model => model.who_trans)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.trans_type, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.trans_type)
+                    @Html.ValidationMessageFor(model => model.trans_type)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.amnt, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.amnt)
+                    @Html.ValidationMessageFor(model => model.amnt)
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <table style="width:auto; height:20px;align-items:center" align="center">
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.trans_dt, "Select date:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.trans_dt, new {@class="form-control" })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.trans_dt)
+                    </td>
+                </tr>
+                <tr style="width: 50%; height: 5%">
+                    <td colspan="2" align="center" id="buttonload">
+                        @*<i class="fa fa-refresh fa-spin"></i>*@
+                        <input type="submit" value="Search" class="btn btn-info"  />
+                    </td>
+                </tr>
+            </table>
+            </div>
+
+        </div>
+        }
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.avl_balance, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.avl_balance)
+                    @Html.ValidationMessageFor(model => model.avl_balance)
+                </div>
+            </div>*@
+
+
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

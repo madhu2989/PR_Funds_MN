@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1 style="background-color:grey;text-emphasis-color:white ;text-align:center">PR FUNDS</h1>
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <!--<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    
+       <style>
+           .style6 {
+               -webkit-box-shadow: -5px 10px 81px 14px rgba(0,0,0,0.75);
+               -moz-box-shadow: -5px 10px 81px 14px rgba(0,0,0,0.75);
+               box-shadow: -5px 10px 81px 14px rgba(0,0,0,0.75);
+               padding: 10px;
+           }
+
+       </style>
+    <style>
+        #table1 th {
+            border: 2px solid;
+            background-color: #cca6a6;
+        }
+
+        #table1 td {
+            border: 1px solid;
+        }
+    </style>
+    <style>
+        #trans_tab th {
+            border: 2px solid;
+            background-color: #cca6a6;
+        }
+
+        #trasns_tab td {
+            border: 1px solid;
+        }
+    </style>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+    </style>
+
+
+</head>
+
+<body style="background-color: lightgrey;">
+
+    <div class="topnav">
+        <a class="active" href="~/Admin/mainpage"><span class="glyphicon glyphicon-home"></span>Home</a>
+        <a href="~/Admin/addmember"><span class="glyphicon glyphicon-user"></span>Add Member</a>
+        <a href="~/Admin/fundlist_details"><span class="glyphicon glyphicon-list-alt"></span>Fund List</a>
+        <a href="~/Admin/transactions"><span class="glyphicon glyphicon-usd"></span>Transactions</a>
+        <a style="align-content:flex-start" href="~/Admin/printweeklyfund"><span class="glyphicon glyphicon-print"></span> Print weekly fund</a>
+        <a href="~/Admin/updatebalance"><span class="glyphicon glyphicon-refresh"></span>Update balance</a>
+        <a href="~/login/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a>
+    </div>
+
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+
+                </div>
+            </div>
+        </div>*@
+
+
+
+    <div class="container body-content">
+
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+
+</html>
+<footer style="bottom:0;position:fixed">
+    <h4 style="background-color: grey;text-align:center">JAI SRI RAM</h4>
+</footer>

@@ -1,0 +1,135 @@
+﻿@model IEnumerable<PR_Funds_MN.sp_view_new_addmember_only_Result>
+
+@{
+    ViewBag.Title = "fundlist";
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">Fund list details</h2>
+
+@*<h3 style="text-align:left;color:green">@TempData["Trans_message"]</h3>
+<h3 style="text-align:left;color:green">@TempData["insufficient_bal"]</h3>*@
+<h3 style="text-align:left;color:green">@TempData["edited"]</h3>
+
+   <div id="pageload">
+
+   </div>
+
+<style type="text/css">
+    #pageload {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        /*https: //www.google.co.in/search?rlz=1C1DFOC_enIN634IN652&tbm=isch&q=loader+gif&chips=q:loader+gif,g_6:animated,g_1:gif+animation&sa=X&ved=0ahUKEwjxo7XHz4PdAhWHbn0KHT0FAIUQ4lYIKCgA&biw=1366&bih=662&dpr=1#imgrc=YO6Lu685lfbQmM:*/
+        background: url('http://www.tumblr.com/tagged/loader-gif') no-repeat center center;
+    }
+    
+
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+    $(function()
+    {
+        $(window).load(function()
+        {
+            $('#pageload').fadeOut(5000);
+        })
+            
+    })
+</script>
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<p id="name"></p>
+<script>
+    function searchbyname() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("textboxname");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table1");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+
+            }
+        }
+    }
+</script>
+<div>
+    <table>
+        <tr>
+            <td>
+                <input type="text" placeholder="search by name" id="textboxname" onkeyup="searchbyname()" />
+            </td>
+            <td>
+               
+            </td>
+            <td>
+                 Available Bal:
+            </td>
+            <td>
+                @Html.TextBoxFor(a => @Session["avl_bl"], new { @readonly = "read-only" })
+            </td>
+
+        </tr>
+    </table>
+</div>
+<table class="table-bordered table-striped" id="table1" style="border-collapse:collapse; width: 100%; border: 1px solid">
+
+
+
+    <tr>
+        <th style="text-align:center">
+            @Html.DisplayName("Id")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Member name")
+        </th>
+        <th style="text-align:center;padding:16px">
+            @Html.DisplayName("Mobile no")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Recent transaction date")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Actions")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.mobile_no)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.dt))
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+
+                @Html.ActionLink("Details", "fundlist", new { id = item.id, name = item.name, mob = item.mobile_no }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Edit", "editmember", new { id = item.id }, new { @class = "btn btn-info" })
+
+            </td>
+        </tr>
+    }
+
+</table>

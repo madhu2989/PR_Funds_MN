@@ -1,0 +1,77 @@
+﻿@model PR_Funds_MN.sp_view_fund_collection_new_byidonly_Result
+
+@{
+    ViewBag.Title = "deletemember";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">Delete member</h2>
+<h3 style="text-align:center;color:green">@TempData["deleted"]</h3>
+
+<p id="message"></p>
+
+<script>
+    function delete_(myform)
+    {
+        console.log("im inside showmessage");
+        var msg;
+        if(confirm("Are you sure?"))
+        {
+            myform.submit();
+            //message already in tempdapta so imnot giving message in javascript
+            msg = "";
+        }
+        else
+        {
+            msg = "you pressed cancel!";
+            return;
+        }
+        document.getElementById("message").innerHTML = msg;
+    }
+
+</script>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "myform" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            <table style="width:auto; height:300px;align-items:center" align="center">
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.mobile_no, "Member name:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => @Session["Name"], new { @readonly = "readonly" })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.name)
+                    </td>
+                </tr>
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.mobile_no, "Mobile No.:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => @Session["mob"], new { @readonly = "readonly" })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.mobile_no)
+                    </td>
+                </tr>
+                <tr style="width: 50%; height: 5%">
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FundsModelStoreContainer" CdmEntityContainer="FundEntities">
+    <EntitySetMapping Name="full_valuestoprocedure">
+      <EntityTypeMapping TypeName="FundsModel.full_valuestoprocedure">
+        <MappingFragment StoreEntitySet="full_valuestoprocedure">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="loan_amt" ColumnName="loan_amt" />
+          <ScalarProperty Name="inst_amt" ColumnName="inst_amt" />
+          <ScalarProperty Name="no_ofdue" ColumnName="no_ofdue" />
+          <ScalarProperty Name="paid_dt" ColumnName="paid_dt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fund_collection_new">
+      <EntityTypeMapping TypeName="FundsModel.fund_collection_new">
+        <MappingFragment StoreEntitySet="fund_collection_new">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="loan_amnt" ColumnName="loan_amnt" />
+          <ScalarProperty Name="balance_amt" ColumnName="balance_amt" />
+          <ScalarProperty Name="no_ofdue" ColumnName="no_ofdue" />
+          <ScalarProperty Name="dt" ColumnName="dt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fund_login">
+      <EntityTypeMapping TypeName="FundsModel.fund_login">
+        <MappingFragment StoreEntitySet="fund_login">
+          <ScalarProperty Name="sl_no" ColumnName="sl_no" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pass_word" ColumnName="pass_word" />
+          <ScalarProperty Name="user_roleid" ColumnName="user_roleid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trans_fund">
+      <EntityTypeMapping TypeName="FundsModel.trans_fund">
+        <MappingFragment StoreEntitySet="trans_fund">
+          <ScalarProperty Name="sl_no" ColumnName="sl_no" />
+          <ScalarProperty Name="who_trans" ColumnName="who_trans" />
+          <ScalarProperty Name="trans_type" ColumnName="trans_type" />
+          <ScalarProperty Name="amnt" ColumnName="amnt" />
+          <ScalarProperty Name="trans_dt" ColumnName="trans_dt" />
+          <ScalarProperty Name="avl_balance" ColumnName="avl_balance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_fund_login_" FunctionName="FundsModel.Store.sp_fund_login_">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FundsModel.sp_fund_login__Result">
+          <ScalarProperty Name="sl_no" ColumnName="sl_no" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pass_word" ColumnName="pass_word" />
+          <ScalarProperty Name="user_roleid" ColumnName="user_roleid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_members" FunctionName="FundsModel.Store.sp_members" />
+    <FunctionImportMapping FunctionImportName="sp_view_fund_collection_new" FunctionName="FundsModel.Store.sp_view_fund_collection_new">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FundsModel.sp_view_fund_collection_new_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="loan_amnt" ColumnName="loan_amnt" />
+          <ScalarProperty Name="balance_amt" ColumnName="balance_amt" />
+          <ScalarProperty Name="no_ofdue" ColumnName="no_ofdue" />
+          <ScalarProperty Name="dt" ColumnName="dt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_view_fund_collection_new_byid" FunctionName="FundsModel.Store.sp_view_fund_collection_new_byid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FundsModel.sp_view_fund_collection_new_byid_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="loan_amnt" ColumnName="loan_amnt" />
+          <ScalarProperty Name="balance_amt" ColumnName="balance_amt" />
+          <ScalarProperty Name="no_ofdue" ColumnName="no_ofdue" />
+          <ScalarProperty Name="dt" ColumnName="dt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_viewtrans_fund" FunctionName="FundsModel.Store.sp_viewtrans_fund">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FundsModel.sp_viewtrans_fund_Result">
+          <ScalarProperty Name="sl_no" ColumnName="sl_no" />
+          <ScalarProperty Name="who_trans" ColumnName="who_trans" />
+          <ScalarProperty Name="trans_type" ColumnName="trans_type" />
+          <ScalarProperty Name="amnt" ColumnName="amnt" />
+          <ScalarProperty Name="trans_dt" ColumnName="trans_dt" />
+          <ScalarProperty Name="avl_balance" ColumnName="avl_balance" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_fund_collection_new_addmember" FunctionName="FundsModel.Store.sp_fund_collection_new_addmember" />
+    <FunctionImportMapping FunctionImportName="sp_fund_amount" FunctionName="FundsModel.Store.sp_fund_amount" />
+    <FunctionImportMapping FunctionImportName="sp_checkbal" FunctionName="FundsModel.Store.sp_checkbal" />
+    <FunctionImportMapping FunctionImportName="sp_no_ofdays" FunctionName="FundsModel.Store.sp_no_ofdays" />
+    <FunctionImportMapping FunctionImportName="sp_no_ofweeks" FunctionName="FundsModel.Store.sp_no_ofweeks" />
+    <FunctionImportMapping FunctionImportName="sp_fund_collection_new" FunctionName="FundsModel.Store.sp_fund_collection_new" />
+    <FunctionImportMapping FunctionImportName="sp_viewtrans_bydate" FunctionName="FundsModel.Store.sp_viewtrans_bydate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FundsModel.sp_viewtrans_bydate_Result">
+          <ScalarProperty Name="sl_no" ColumnName="sl_no" />
+          <ScalarProperty Name="who_trans" ColumnName="who_trans" />
+          <ScalarProperty Name="trans_type" ColumnName="trans_type" />
+          <ScalarProperty Name="amnt" ColumnName="amnt" />
+          <ScalarProperty Name="trans_dt" ColumnName="trans_dt" />
+          <ScalarProperty Name="avl_balance" ColumnName="avl_balance" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_view_fund_collection_new_byname" FunctionName="FundsModel.Store.sp_view_fund_collection_new_byname">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FundsModel.sp_view_fund_collection_new_byname_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="loan_amnt" ColumnName="loan_amnt" />
+          <ScalarProperty Name="balance_amt" ColumnName="balance_amt" />
+          <ScalarProperty Name="no_ofdue" ColumnName="no_ofdue" />
+          <ScalarProperty Name="dt" ColumnName="dt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_viewmembers" FunctionName="FundsModel.Store.sp_viewmembers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FundsModel.sp_viewmembers_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="cont_num" ColumnName="cont_num" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_members_singlename" FunctionName="FundsModel.Store.sp_members_singlename" />
+    <EntitySetMapping Name="avl_fund">
+      <EntityTypeMapping TypeName="FundsModel.avl_fund">
+        <MappingFragment StoreEntitySet="avl_fund">
+          <ScalarProperty Name="avl_fund_" ColumnName="avl_fund_" />
+          <ScalarProperty Name="sl_no" ColumnName="sl_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_avl_fund" FunctionName="FundsModel.Store.sp_avl_fund" />
+    <FunctionImportMapping FunctionImportName="sp_fund_collection_new_editonly" FunctionName="FundsModel.Store.sp_fund_collection_new_editonly" />
+    <FunctionImportMapping FunctionImportName="sp_view_fund_collection_new_byidonly" FunctionName="FundsModel.Store.sp_view_fund_collection_new_byidonly">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FundsModel.sp_view_fund_collection_new_byidonly_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="loan_amnt" ColumnName="loan_amnt" />
+          <ScalarProperty Name="balance_amt" ColumnName="balance_amt" />
+          <ScalarProperty Name="no_ofdue" ColumnName="no_ofdue" />
+          <ScalarProperty Name="dt" ColumnName="dt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_fund_login" FunctionName="FundsModel.Store.sp_fund_login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FundsModel.sp_fund_login_Result">
+          <ScalarProperty Name="sl_no" ColumnName="sl_no" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pass_word" ColumnName="pass_word" />
+          <ScalarProperty Name="user_roleid" ColumnName="user_roleid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_fund_login_insert" FunctionName="FundsModel.Store.sp_fund_login_insert" />
+    <EntitySetMapping Name="fund_login_onlyfor_signup">
+      <EntityTypeMapping TypeName="FundsModel.fund_login_onlyfor_signup">
+        <MappingFragment StoreEntitySet="fund_login_onlyfor_signup">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="user_roleid" ColumnName="user_roleid" />
+          <ScalarProperty Name="con_pass_word" ColumnName="con_pass_word" />
+          <ScalarProperty Name="pass_word" ColumnName="pass_word" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="sl_no" ColumnName="sl_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_view_fund_login" FunctionName="FundsModel.Store.sp_view_fund_login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="FundsModel.sp_view_fund_login_Result">
+          <ScalarProperty Name="sl_no" ColumnName="sl_no" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pass_word" ColumnName="pass_word" />
+          <ScalarProperty Name="user_roleid" ColumnName="user_roleid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_fund_login_delete" FunctionName="FundsModel.Store.sp_fund_login_delete" />
+  </EntityContainerMapping>
+</Mapping>

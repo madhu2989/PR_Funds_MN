@@ -1,0 +1,124 @@
+﻿@model IEnumerable<PR_Funds_MN.sp_view_funds_ofMember_byid_Result>
+
+
+@{
+    ViewBag.Title = "fundlist";
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">Fund list</h2>
+
+<h3 style="text-align:left;color:green">@TempData["Trans_message"]</h3>
+<h3 style="text-align:left;color:green">@TempData["insufficient_bal"]</h3>
+<h3 style="text-align:left;color:green">@TempData["edited"]</h3>
+<h3 style="text-align:left;color:red">@ViewBag.nonullvaluestoaddmember</h3>
+<h3 style="text-align:left;color:red">@TempData["deleted"]</h3>
+
+
+
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+<div>
+    <table>
+        <tr>
+            <td>
+                @Html.ActionLink("New Fund", "newfund", new { id = Session["id"] }, new { @class = "btn btn-info" })
+
+            </td>
+
+        </tr>
+    </table>
+</div>
+<table class="table-bordered table-striped" id="table1" style="border-collapse:collapse; width: 100%; border: 1px solid">
+
+
+
+    <tr>
+        <th style="text-align:center">
+            @Html.DisplayName("Id")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Member name")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Loan amount")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Balance amount")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Due")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Transaction date")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Actions")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td style="text-align: right; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.loan_amnt)
+            </td>
+            <td style="text-align: right; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.balance_amt)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.no_ofdue)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.dt))
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+
+                @*@if (item.balance_amt == 0 && item.no_ofdue == 0)
+                             {
+                                 @Html.ActionLink("New Fund", "newfund", new
+                    {
+                        id = item.mem_id,
+                        name = item.name
+
+
+                    }, new { @class = "btn btn-info" })
+
+                             }*@
+
+                @if (item.balance_amt != 0 && item.loan_amnt != 0)
+                {
+                    @Html.ActionLink("Collect Fund", "collectfund", new
+               {
+                   loan_id = item.loan_id,
+                   id = item.id,
+                   name = item.name,
+                   loan = item.loan_amnt
+               }, new { @class = "btn btn-success" })
+                }
+
+                @Html.ActionLink("Edit", "editloan_member", new { loan_id = item.loan_id, id = item.id }, new { @class = "btn btn-primary" })
+
+                @if (item.balance_amt == 0)
+                {
+                    @Html.ActionLink("Delete", "deleteloan_member", new { loan_id = item.loan_id, id = item.id }, new { @class = "btn btn-danger" })
+
+                }
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+

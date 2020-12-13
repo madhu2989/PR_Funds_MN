@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PR_Funds_MN.sp_viewtrans_bydate_Result>
+
+@{
+    ViewBag.Title = "printweeklyfundbydate";
+}
+
+
+<div id="id1">
+    <table class="table" id="table1" style="border-collapse:collapse;animation-name:movearound">
+        <tr>
+            <th>
+                @Html.DisplayName("sl No")
+            </th>
+            <th>
+                @Html.DisplayName("Member name")
+            </th>
+            <th>
+                @Html.DisplayName("Transaction type")
+            </th>
+            <th>
+                @Html.DisplayName("Amount")
+            </th>
+            <th>
+                @Html.DisplayName("Transaction date")
+            </th>
+            <th>
+                @Html.DisplayName("Available Balance")
+            </th>
+            
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.sl_no)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.who_trans)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.trans_type)
+                </td>
+                <td style="text-align:right">
+                    @Html.DisplayFor(modelItem => item.amnt)
+                </td>
+                <td style="text-align:center">
+                    @Convert.ToString(string.Format("{0:MM/dd/yyyy}", item.trans_dt))
+                </td>
+                <td style="text-align:right">
+                    @Html.DisplayFor(modelItem => item.avl_balance)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+            </tr>
+        }        
+    </table>
+</div>
+<div>
+    <input id="printId" type="submit" value="Print" onclick="printcontent('id1')" />
+</div>
+
+
+<script>
+    function printcontent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+</script>

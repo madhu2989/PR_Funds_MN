@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "mem_mainpage";
+    Layout = "~/Views/Shared/Layout_for_guest.cshtml"; 
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">Mainpage</h2>
+<h3 style="text-align:center;color:cadetblue">@ViewBag.name</h3>
+@ViewBag.message
+<div>
+    <table>
+        <tr>            
+            <td>
+                <p>
+                    @Html.ActionLink("Check my fund balance", "mem_fundlist")
+                </p>
+            </td>
+        </tr>
+        </table>
+    </div>

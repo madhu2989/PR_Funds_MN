@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PR_Funds_MN.sp_view_fund_login_Result>
+
+@{
+    ViewBag.Title = "accessed_uers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">Password management</h2>
+
+<h3 style="text-align:center;color:green">@TempData["access_del"]</h3>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table" id="table1" style="border-collapse:collapse; width: 100%; border: 1px solid">
+    <tr>
+        <th style="text-align:center">
+            @Html.DisplayName("Sl No.")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("UserName")
+        </th>
+        <th style="text-align: center; padding: 16px">
+            @Html.DisplayName("Password")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("User role Id")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Member Name")
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayName("Actions")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.sl_no)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.pass_word)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.user_roleid)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td style="text-align: center; background-color: #f2f2f2">
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("Delete", "delete_access", new {  id=item.sl_no ,name=item.Name})
+            </td>
+        </tr>
+    }
+    
+</table>

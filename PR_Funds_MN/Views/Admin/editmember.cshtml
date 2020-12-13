@@ -1,0 +1,54 @@
+﻿@model PR_Funds_MN.sp_view_new_addmember_byid_Result
+
+@{
+    ViewBag.Title = "editmember";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">Edit member details</h2>
+<h3 style="text-align:center;color:green">@TempData["edited"]</h3>
+<h3 style="text-align:center;color:red">@ViewBag.nonullvaluestoaddmember</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            <table style="width:auto; height:300px;align-items:center" align="center">
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.mobile_no, "Member name:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.name)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.name)
+                    </td>
+                </tr>
+                <tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.LabelFor(model => model.mobile_no, "Mobile No.:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.mobile_no)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.mobile_no)
+                    </td>
+                </tr>
+                <tr style="width: 50%; height: 5%">
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Edit" class="btn btn-success" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}

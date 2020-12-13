@@ -1,0 +1,54 @@
+﻿@model PR_Funds_MN.avl_fund
+
+@{
+    ViewBag.Title = "updatebalance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">Update balance</h2>
+<h3 style="text-align:left;color:green">@TempData["bal_upd"]</h3>
+<h3 style="text-align:left;color:green">@ViewBag.avl_bal</h3>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.sl_no, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sl_no)
+            @Html.ValidationMessageFor(model => model.sl_no)
+        </div>
+    </div>*@
+
+        <div class="form-group">
+            <table style="width:auto; height:80px;align-items:center" align="center">
+                <tr style="width: 50%;height:5% ">
+                    <td>
+                        @Html.LabelFor(model => model.avl_fund_, "Enter amount:", new { @class = "control-label col-md-2" })
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.avl_fund_)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.avl_fund_)
+                    </td>
+                </tr>
+                <tr style="width: 50%;height:5% ">
+                    <td colspan="2" align="center">                    
+                        <input type="submit" value="submit" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>           
+        </div>
+        </div>
+    
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

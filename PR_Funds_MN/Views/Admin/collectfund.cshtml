@@ -1,0 +1,161 @@
+﻿@model PR_Funds_MN.valuesto_sp_funds_ofMember
+
+@{
+    ViewBag.Title = "collectfund";
+}
+
+<h2 style="text-align: center; color: darkblue; font-family: Algerian">collecting fund</h2>
+<h3 style="text-align:left;color:red">@ViewBag.nonullvaluestoaddmember</h3>
+
+<p id="message"></p>
+
+<script>
+    function showmessage()
+    {
+        console.log("im inside showmessage");
+        var msg;
+        if(confirm("Are you sure?"))
+        {
+            msg="Installment amount has been credited by "@Session["Name"];
+        }
+        else
+        {
+            msg = "you pressed cancel!";
+        }
+        document.getElementById("message").innerHTML = msg;
+    }
+
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @*<div class="form-horizontal">
+            <h4>full_valuestoprocedure</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => @Session["Name"])
+                    @Html.ValidationMessageFor(model => model.name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.mobile_no, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => @Session["mob"])
+                    @Html.ValidationMessageFor(model => model.mobile_no)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.loan_amt, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => @Session["loan"])
+                    @Html.ValidationMessageFor(model => model.loan_amt)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.inst_amt, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.inst_amt)@TempData["amt_negtive_or_zero"]
+                    @Html.ValidationMessageFor(model => model.inst_amt)
+                </div>
+            </div>
+
+            @*<div class="form-group">
+            @Html.LabelFor(model => model.no_ofdue, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.no_ofdue)
+                @Html.ValidationMessageFor(model => model.no_ofdue)
+            </div>
+        </div>*@
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.paid_dt, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.paid_dt)
+                @Html.ValidationMessageFor(model => model.paid_dt)
+            </div>
+        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="submit" class="btn btn-default" onclick="showmessage" />
+                </div>
+            </div>
+        </div>*@
+    <div class="form-group">
+        <table style="width:auto; height:300px;align-items:center" align="center">
+            <tr style="width: 50%; height: 5%">
+                <td>
+                    @Html.DisplayName("Member name:")
+                </td>
+                <td>
+                    @Html.DisplayTextFor(model => @Session["col_Name"])
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.name)
+                </td>
+            </tr>
+            @*<tr style="width: 50%; height: 5%">
+                    <td>
+                        @Html.DisplayName("Mobile No:")
+                    </td>
+                    <td>
+                        @Html.DisplayTextFor(model => @Session["mob"])
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(a => a.mobile_no)
+                    </td>
+                </tr>*@
+            <tr style="width: 50%; height: 5%">
+                <td>
+                    @Html.DisplayName("Loan amount:")
+                </td>
+                <td>
+                    @Html.DisplayTextFor(model => @Session["col_loan"])
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.loan_amt)
+                </td>
+            </tr>
+            <tr style="width: 50%; height: 5%">
+                <td>
+                    @Html.DisplayName("Installment amount:")
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.inst_amt)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.inst_amt)
+                </td>
+            </tr>
+            <tr style="width: 50%; height: 5%">
+                <td>
+                    @Html.DisplayName("Date:")
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.paid_dt)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.paid_dt)
+                </td>
+            </tr>
+            <tr style="width: 50%; height: 5%">
+                <td colspan="2" align="center">
+                    <input type="submit" value="submit" class="btn btn-success" onclick="showmessage" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "fundlist")
+    </div>*@

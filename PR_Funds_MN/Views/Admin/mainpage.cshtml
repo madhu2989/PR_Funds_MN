@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "mainpage";
+    Layout = "~/Views/Shared/_layoutfor_mainpage.cshtml";
+}
+<h2 style="text-align:center;color:darkblue;font-family:Algerian">Main page</h2>
+
+@ViewBag.message
+<hr style="height:5px;color:black" />
+<div>
+    <table>
+        <tr>
+            <td>
+                @Html.ActionLink("Sign up(new user)", "sign_up", "login")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("password management", "accessed_uers", "login")
+            </td>
+        </tr>
+    </table>
+</div>

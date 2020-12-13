@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{32C0D56F-4D50-41EF-8630-7502FC7CF084}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PR_Funds_MN</RootNamespace>
+    <AssemblyName>PR_Funds_MN</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fund.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>fund.edmx</DependentUpon>
+      <LastGenOutput>fund.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="fund.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>fund.edmx</DependentUpon>
+      <LastGenOutput>fund.cs</LastGenOutput>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="WebForm_otp.aspx" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\image\download.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\login\login.cshtml" />
+    <Content Include="Views\Admin\mainpage.cshtml" />
+    <Content Include="Views\Admin\addmember.cshtml" />
+    <Content Include="Views\Admin\fundlist.cshtml" />
+    <Content Include="Views\Admin\newfund.cshtml" />
+    <Content Include="Views\Admin\collectfund.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="avl_fund.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\loginController.cs" />
+    <Compile Include="Controllers\memberController.cs" />
+    <Compile Include="full_valuestoprocedure.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fund.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fund.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="funds_ofMember.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund_collection_new.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund_login.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fund_login_onlyfor_signup.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="loansof_member.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="new_addmember_only.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="partialclass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_fund_login_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_fund_login__Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_viewmembers_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_viewtrans_bydate_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_viewtrans_fund_joined_deposit_byId_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_viewtrans_fund_joined_deposit_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_viewtrans_fund_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_view_funds_ofMember_byid_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_view_funds_ofMember_by_loanid_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_view_fund_collection_new_byidonly_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_view_fund_collection_new_byid_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_view_fund_collection_new_byname_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_view_fund_collection_new_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_view_fund_login_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_view_loansof_member_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_view_new_addmember_byid_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_view_new_addmember_only_Result.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="trans_fund.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="valuesto_sp_funds_ofMember.cs">
+      <DependentUpon>fund.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm_otp.aspx.cs">
+      <DependentUpon>WebForm_otp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm_otp.aspx.designer.cs">
+      <DependentUpon>WebForm_otp.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <EntityDeploy Include="fund.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>fund.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="fund.edmx.diagram">
+      <DependentUpon>fund.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\Admin\transactions.cshtml" />
+    <Content Include="Views\member\mem_fundlist.cshtml" />
+    <Content Include="Views\Admin\printweeklyfund.cshtml" />
+    <Content Include="Views\Admin\printweeklyfundbydate.cshtml" />
+    <Content Include="Views\Shared\_layouforlogin.cshtml" />
+    <Content Include="Views\member\mem_mainpage.cshtml" />
+    <Content Include="Views\Shared\_layoutfor_mainpage.cshtml" />
+    <Content Include="Views\Admin\updatebalance.cshtml" />
+    <Content Include="Views\Admin\editmember.cshtml" />
+    <Content Include="Views\Shared\Layout_for_guest.cshtml" />
+    <Content Include="Views\login\sign_up.cshtml" />
+    <Content Include="Views\login\accessed_uers.cshtml" />
+    <Content Include="Views\Admin\deletemember.cshtml" />
+    <Content Include="Views\Admin\fundlist_details.cshtml" />
+    <Content Include="Views\Admin\editloan_member.cshtml" />
+    <Content Include="Views\member\My_transactions.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52551</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52551/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

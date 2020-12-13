@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FundsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="full_valuestoprocedure">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="mobile_no" Type="Int64" />
+    <Property Name="loan_amt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="inst_amt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="no_ofdue" Type="Int32" />
+    <Property Name="paid_dt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="fund_collection_new">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="mobile_no" Type="Int64" />
+    <Property Name="loan_amnt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="balance_amt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="no_ofdue" Type="Int32" />
+    <Property Name="dt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="fund_login">
+    <Key>
+      <PropertyRef Name="sl_no" />
+    </Key>
+    <Property Name="sl_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="pass_word" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="user_roleid" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="trans_fund">
+    <Key>
+      <PropertyRef Name="sl_no" />
+    </Key>
+    <Property Name="sl_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="who_trans" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="trans_type" Type="Int32" />
+    <Property Name="amnt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="trans_dt" Type="DateTime" Precision="3" />
+    <Property Name="avl_balance" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityContainer Name="FundEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="full_valuestoprocedure" EntityType="Self.full_valuestoprocedure" />
+    <EntitySet Name="fund_collection_new" EntityType="Self.fund_collection_new" />
+    <EntitySet Name="fund_login" EntityType="Self.fund_login" />
+    <EntitySet Name="trans_fund" EntityType="Self.trans_fund" />
+    <FunctionImport Name="sp_fund_login_" ReturnType="Collection(FundsModel.sp_fund_login__Result)">
+      <Parameter Name="userName_" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_members" ReturnType="Collection(String)" />
+    <FunctionImport Name="sp_view_fund_collection_new" ReturnType="Collection(FundsModel.sp_view_fund_collection_new_Result)" />
+    <FunctionImport Name="sp_view_fund_collection_new_byid" ReturnType="Collection(FundsModel.sp_view_fund_collection_new_byid_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_viewtrans_fund" ReturnType="Collection(FundsModel.sp_viewtrans_fund_Result)" />
+    <FunctionImport Name="sp_fund_collection_new_addmember">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="mobile_no" Mode="In" Type="Int64" />
+      <Parameter Name="dt" Mode="In" Type="DateTime" />
+      <Parameter Name="idout" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_fund_amount" ReturnType="Collection(Decimal)" />
+    <FunctionImport Name="sp_checkbal" ReturnType="Collection(Decimal)" />
+    <FunctionImport Name="sp_no_ofdays" ReturnType="Collection(Int32)">
+      <Parameter Name="recnt_date" Mode="InOut" Type="DateTime" />
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_no_ofweeks" ReturnType="Collection(Int32)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_fund_collection_new">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="mobile_no" Mode="In" Type="Int64" />
+      <Parameter Name="loan_amt" Mode="In" Type="Decimal" />
+      <Parameter Name="inst_amt" Mode="In" Type="Decimal" />
+      <Parameter Name="no_ofdue" Mode="In" Type="Int32" />
+      <Parameter Name="dt" Mode="In" Type="DateTime" />
+      <Parameter Name="trans_type" Mode="InOut" Type="Int32" />
+      <Parameter Name="sl_no" Mode="InOut" Type="Int32" />
+      <Parameter Name="avl_bal" Mode="InOut" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="sp_viewtrans_bydate" ReturnType="Collection(FundsModel.sp_viewtrans_bydate_Result)">
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_view_fund_collection_new_byname" ReturnType="Collection(FundsModel.sp_view_fund_collection_new_byname_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_viewmembers" ReturnType="Collection(FundsModel.sp_viewmembers_Result)" />
+    <FunctionImport Name="sp_members_singlename" ReturnType="Collection(String)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="avl_fund" EntityType="FundsModel.avl_fund" />
+    <FunctionImport Name="sp_avl_fund">
+      <Parameter Name="avl_fund_" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="sp_fund_collection_new_editonly">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="mob_no" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_view_fund_collection_new_byidonly" ReturnType="Collection(FundsModel.sp_view_fund_collection_new_byidonly_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_fund_login" ReturnType="Collection(FundsModel.sp_fund_login_Result)">
+      <Parameter Name="userName_" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_fund_login_insert">
+      <Parameter Name="sl_no" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="pass_word" Mode="In" Type="String" />
+      <Parameter Name="user_roleid" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="sl_noout" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="fund_login_onlyfor_signup" EntityType="FundsModel.fund_login_onlyfor_signup" />
+    <FunctionImport Name="sp_view_fund_login" ReturnType="Collection(FundsModel.sp_view_fund_login_Result)" />
+    <FunctionImport Name="sp_fund_login_delete">
+      <Parameter Name="sl_no" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_deleteMember">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_viewtrans_fund_joined_deposit" ReturnType="Collection(FundsModel.sp_viewtrans_fund_joined_deposit_Result)" />
+    <EntitySet Name="loansof_member" EntityType="FundsModel.loansof_member" />
+    <FunctionImport Name="sp_loansof_member">
+      <Parameter Name="loan_id" Mode="In" Type="Int32" />
+      <Parameter Name="mem_id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="loan_idout" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_view_loansof_member" ReturnType="Collection(FundsModel.sp_view_loansof_member_Result)">
+      <Parameter Name="mem_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="new_addmember_only" EntityType="FundsModel.new_addmember_only" />
+    <FunctionImport Name="sp_members_checkname" ReturnType="Collection(String)">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_new_addmember_only">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="mobile_no" Mode="In" Type="Int64" />
+      <Parameter Name="dt" Mode="In" Type="DateTime" />
+      <Parameter Name="idout" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_view_new_addmember_only" ReturnType="Collection(FundsModel.sp_view_new_addmember_only_Result)" />
+    <FunctionImport Name="sp_view_new_addmember_byid" ReturnType="Collection(FundsModel.sp_view_new_addmember_byid_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_view_funds_ofMember_byid" ReturnType="Collection(FundsModel.sp_view_funds_ofMember_byid_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="funds_ofMember" EntityType="FundsModel.funds_ofMember" />
+    <FunctionImport Name="sp_funds_ofMember">
+      <Parameter Name="loan_id" Mode="In" Type="Int32" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="loan_amt" Mode="In" Type="Decimal" />
+      <Parameter Name="inst_amt" Mode="In" Type="Decimal" />
+      <Parameter Name="bal_amt" Mode="InOut" Type="Decimal" />
+      <Parameter Name="no_ofdue" Mode="In" Type="Int32" />
+      <Parameter Name="dt" Mode="In" Type="DateTime" />
+      <Parameter Name="trans_type" Mode="InOut" Type="Int32" />
+      <Parameter Name="sl_no" Mode="InOut" Type="Int32" />
+      <Parameter Name="avl_bal" Mode="InOut" Type="Decimal" />
+      <Parameter Name="loan_idout" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="valuesto_sp_funds_ofMember" EntityType="FundsModel.valuesto_sp_funds_ofMember" />
+    <FunctionImport Name="sp_funds_ofMember_for_edit">
+      <Parameter Name="loan_id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_view_funds_ofMember_by_loanid" ReturnType="Collection(FundsModel.sp_view_funds_ofMember_by_loanid_Result)">
+      <Parameter Name="loan_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_delete_funds_ofMember_by_loanid">
+      <Parameter Name="loan_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_viewtrans_fund_joined_deposit_byId" ReturnType="Collection(FundsModel.sp_viewtrans_fund_joined_deposit_byId_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_fund_login__Result">
+    <Property Type="Int32" Name="sl_no" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="pass_word" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="user_roleid" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="sp_view_fund_collection_new_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="25" />
+    <Property Type="Int64" Name="mobile_no" Nullable="true" />
+    <Property Type="Decimal" Name="loan_amnt" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="balance_amt" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="no_ofdue" Nullable="true" />
+    <Property Type="DateTime" Name="dt" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_view_fund_collection_new_byid_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="25" />
+    <Property Type="Int64" Name="mobile_no" Nullable="true" />
+    <Property Type="Decimal" Name="loan_amnt" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="balance_amt" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="no_ofdue" Nullable="true" />
+    <Property Type="DateTime" Name="dt" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_viewtrans_fund_Result">
+    <Property Type="Int32" Name="sl_no" Nullable="false" />
+    <Property Type="String" Name="who_trans" Nullable="true" MaxLength="25" />
+    <Property Type="Int32" Name="trans_type" Nullable="true" />
+    <Property Type="Decimal" Name="amnt" Nullable="true" Precision="19" />
+    <Property Type="DateTime" Name="trans_dt" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="avl_balance" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_viewtrans_bydate_Result">
+    <Property Type="Int32" Name="sl_no" Nullable="false" />
+    <Property Type="String" Name="who_trans" Nullable="true" MaxLength="25" />
+    <Property Type="Int32" Name="trans_type" Nullable="true" />
+    <Property Type="Decimal" Name="amnt" Nullable="true" Precision="19" />
+    <Property Type="DateTime" Name="trans_dt" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="avl_balance" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="sp_view_fund_collection_new_byname_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="25" />
+    <Property Type="Int64" Name="mobile_no" Nullable="true" />
+    <Property Type="Decimal" Name="loan_amnt" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="balance_amt" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="no_ofdue" Nullable="true" />
+    <Property Type="DateTime" Name="dt" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_viewmembers_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="25" />
+    <Property Type="Int64" Name="cont_num" Nullable="true" />
+    <Property Type="String" Name="adress" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="avl_fund">
+    <Key>
+      <PropertyRef Name="sl_no" />
+    </Key>
+    <Property Name="sl_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="avl_fund_" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <ComplexType Name="sp_view_fund_collection_new_byidonly_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="25" />
+    <Property Type="Int64" Name="mobile_no" Nullable="true" />
+    <Property Type="Decimal" Name="loan_amnt" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="balance_amt" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="no_ofdue" Nullable="true" />
+    <Property Type="DateTime" Name="dt" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_fund_login_Result">
+    <Property Type="Int32" Name="sl_no" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="pass_word" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="user_roleid" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="fund_login_onlyfor_signup">
+    <Key>
+      <PropertyRef Name="sl_no" />
+    </Key>
+    <Property Name="sl_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="pass_word" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="con_pass_word" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="user_roleid" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="sp_view_fund_login_Result">
+    <Property Type="Int32" Name="sl_no" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="pass_word" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="user_roleid" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="sp_viewtrans_fund_joined_deposit_Result">
+    <Property Type="Int32" Name="sl_no" Nullable="false" />
+    <Property Type="String" Name="who_trans" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="trans_type" Nullable="true" MaxLength="10" />
+    <Property Type="Decimal" Name="amnt" Nullable="true" Precision="19" />
+    <Property Type="DateTime" Name="trans_dt" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="avl_balance" Nullable="true" Precision="19" />
+  </ComplexType>
+  <EntityType Name="loansof_member">
+    <Key>
+      <PropertyRef Name="loan_id" />
+    </Key>
+    <Property Name="loan_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mem_id" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="sp_view_loansof_member_Result">
+    <Property Type="Int32" Name="loan_id" Nullable="false" />
+    <Property Type="Int32" Name="mem_id" Nullable="true" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="25" />
+    <Property Type="Decimal" Name="loan_amnt" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="balance_amt" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="no_ofdue" Nullable="true" />
+    <Property Type="DateTime" Name="dt" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="new_addmember_only">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="mobile_no" Type="Int64" />
+    <Property Name="dt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="sp_view_new_addmember_only_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="25" />
+    <Property Type="Int64" Name="mobile_no" Nullable="true" />
+    <Property Type="DateTime" Name="dt" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_view_new_addmember_byid_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="25" />
+    <Property Type="Int64" Name="mobile_no" Nullable="true" />
+    <Property Type="DateTime" Name="dt" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_view_funds_ofMember_byid_Result">
+    <Property Type="Int32" Name="loan_id" Nullable="false" />
+    <Property Type="Int32" Name="id" Nullable="true" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="loan_amnt" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="balance_amt" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="no_ofdue" Nullable="true" />
+    <Property Type="DateTime" Name="dt" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="funds_ofMember">
+    <Key>
+      <PropertyRef Name="loan_id" />
+    </Key>
+    <Property Name="loan_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="loan_amnt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="balance_amt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="no_ofdue" Type="Int32" />
+    <Property Name="dt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="valuesto_sp_funds_ofMember">
+    <Key>
+      <PropertyRef Name="loan_id" />
+    </Key>
+    <Property Name="loan_id" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="loan_amt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="inst_amt" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="no_ofdue" Type="Int32" />
+    <Property Name="paid_dt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="sp_view_funds_ofMember_by_loanid_Result">
+    <Property Type="Int32" Name="loan_id" Nullable="false" />
+    <Property Type="Int32" Name="id" Nullable="true" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="loan_amnt" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="balance_amt" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="no_ofdue" Nullable="true" />
+    <Property Type="DateTime" Name="dt" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_viewtrans_fund_joined_deposit_byId_Result">
+    <Property Type="Int32" Name="sl_no" Nullable="false" />
+    <Property Type="String" Name="who_trans" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="trans_type" Nullable="true" MaxLength="10" />
+    <Property Type="Decimal" Name="amnt" Nullable="true" Precision="19" />
+    <Property Type="DateTime" Name="trans_dt" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="avl_balance" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="id" Nullable="true" />
+  </ComplexType>
+</Schema>
